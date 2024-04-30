@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    
+    <data>
+        <variable
+            name="noteViewModel"
+            type="com.vigyat.quicknote.viewmodel.NoteViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        tools:context=".view.AddNoteActivity">
+
+        <TextView
+            android:id="@+id/AddORUpdateTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="72dp"
+            android:gravity="center"
+            android:text="@string/add_a_new_note"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/titleTextInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Title"
+            android:layout_marginStart="9dp"
+            android:layout_marginEnd="9dp"
+            android:layout_marginTop="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/AddORUpdateTV"
+            app:boxBackgroundColor="@color/white">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/titleEt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/contentTextInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="9dp"
+            android:layout_marginEnd="9dp"
+            android:layout_marginTop="40dp"
+            android:hint="Content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:boxBackgroundColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@+id/titleTextInputLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/contentEt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="start"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/saveBtn"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="96dp"
+            android:background="@drawable/custom_button"
+            android:text="Save Note"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/contentTextInputLayout" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
