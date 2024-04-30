@@ -14,6 +14,9 @@ import com.vigyat.quicknote.databinding.ItemNoteBinding
 import com.vigyat.quicknote.model.room.Note
 import com.vigyat.quicknote.view.AddNoteActivity
 import com.vigyat.quicknote.view.MainActivity
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class NotesAdapter(private val context: Context, private var notes: List<Note>) :
     RecyclerView.Adapter<NotesAdapter.NotesViewHolder>() {
@@ -24,8 +27,16 @@ class NotesAdapter(private val context: Context, private var notes: List<Note>) 
 
         fun bind(note: Note) {
             binding.titleTV.text = note.title
-
             binding.contentTV.text = note.content
+
+            val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
+            val date = Date(note.timeStamp)
+            val formattedDate = sdf.format(date)
+
+            val parts = formattedDate.split(" ")
+            val formattedDateWithAt = parts[0] + " at " + parts[1]
+            binding.timeStampTV.text = formattedDateWithAt
+
 
             binding.cardView.setOnClickListener {
                 val intent = Intent(context, AddNoteActivity::class.java).apply {
