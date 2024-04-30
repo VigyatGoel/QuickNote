@@ -6,4 +6,7 @@
     </style>
 
     <style name="Theme.QuickNote" parent="Base.Theme.QuickNote" />
+
+    <!-- Base application theme. -->
+
 </resources>

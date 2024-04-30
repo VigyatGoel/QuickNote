@@ -26,5 +26,9 @@ class Repository(private val noteDao: NoteDao) {
         return noteDao.deleteNote(note)
     }
 
+    fun getFilteredNotes(query: String): LiveData<List<Note>> {
+        return noteDao.getFilteredNotes("%$query%")
+    }
+
 
 }

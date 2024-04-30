@@ -29,6 +29,10 @@ class NoteViewModel(private val repository: Repository) : ViewModel(), Observabl
         return repository.getNoteById(id)
     }
 
+    fun getFilteredNotes(query: String): LiveData<List<Note>> {
+        return repository.getFilteredNotes(query)
+    }
+
     override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
 
     }

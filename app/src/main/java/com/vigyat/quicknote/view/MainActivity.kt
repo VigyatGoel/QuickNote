@@ -2,8 +2,11 @@ package com.vigyat.quicknote.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.databinding.DataBindingUtil
@@ -26,7 +29,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var addBtn: FloatingActionButton
     private lateinit var mainBinding: ActivityMainBinding
     private lateinit var noteViewModel: NoteViewModel
-
+    private lateinit var noNotesTV: TextView
+    private lateinit var searchView: SearchView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -40,6 +44,26 @@ class MainActivity : AppCompatActivity() {
         mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         addBtn = mainBinding.addBtn
+        noNotesTV = mainBinding.noNotesTV
+        searchView = mainBinding.searchView
+
+        searchView.setOnQueryTextListener(object :
+            SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                // Handle search query submission here
+                // For example, you can filter your notes based on the query
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                noteViewModel.getFilteredNotes(newText ?: "").observe(this@MainActivity) { notes ->
+                    // Update your RecyclerView adapter with the filtered notes
+                    mainBinding.recyclerView.adapter = NotesAdapter(this@MainActivity, notes)
+                }
+                return true
+            }
+        })
+
 
         val dao = NotesDatabase.getInstance(applicationContext).noteDao
         val repository = Repository(dao)
@@ -47,6 +71,14 @@ class MainActivity : AppCompatActivity() {
 
         noteViewModel = ViewModelProvider(this, factory)[NoteViewModel::class.java]
 
+        noteViewModel.notes.observe(this) { notes ->
+            // If notes list is empty, show the noNotesTextView
+            if (notes.isEmpty()) {
+                noNotesTV.visibility = View.VISIBLE
+            } else {
+                noNotesTV.visibility = View.GONE
+            }
+        }
         initRecyclerView()
 
         addBtn.setOnClickListener {
