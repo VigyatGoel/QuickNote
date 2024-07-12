@@ -30,5 +30,9 @@ class Repository(private val noteDao: NoteDao) {
         return noteDao.getFilteredNotes("%$query%")
     }
 
+    suspend fun getAllNotesDirectly(): List<Note> {
+        return noteDao.getNotes()
+    }
+
 
 }

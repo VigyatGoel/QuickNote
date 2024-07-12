@@ -29,5 +29,6 @@ interface NoteDao {
     @Query("SELECT * FROM notes WHERE title LIKE :query OR content LIKE :query")
     fun getFilteredNotes(query: String): LiveData<List<Note>>
 
-
+    @Query("SELECT * FROM notes ORDER BY id DESC")
+    suspend fun getNotes(): List<Note>
 }

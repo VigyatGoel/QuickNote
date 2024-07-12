@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.vigyat.quicknote" />
+                  <option name="mobileSdkAppId" value="1:497950599100:android:10c39f81710127e8ac2db9" />
+                  <option name="projectId" value="quick-note-ab357" />
+                  <option name="projectNumber" value="497950599100" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

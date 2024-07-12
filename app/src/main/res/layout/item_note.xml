@@ -5,9 +5,9 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="120dp"
         app:cardCornerRadius="20dp"
-        app:cardElevation="15dp"
+        app:cardElevation="10dp"
         android:layout_margin="10dp">
 
         <ImageButton
@@ -29,7 +29,9 @@
             android:textSize="25sp"
             android:layout_marginTop="15dp"
             android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp" />
+            android:layout_marginRight="15dp"
+            android:maxLines="1"
+            android:ellipsize="end"/>
 
         <TextView
             android:id="@+id/contentTV"
@@ -44,20 +46,27 @@
             android:maxLines="1"
             android:ellipsize="end" />
 
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Last modified:"
-            android:layout_marginTop="100dp"
-            android:layout_marginLeft="130dp" />
+            android:layout_gravity="bottom|end"
+            android:orientation="horizontal"
+            android:paddingEnd="10dp"
+            android:paddingBottom="5dp">
 
-        <TextView
-            android:id="@+id/timeStampTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="31-10-2024"
-            android:layout_marginTop="100dp"
-            android:layout_marginLeft="225dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Last modified:" />
+
+            <TextView
+                android:gravity="left"
+                android:id="@+id/timeStampTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="31-10-2024"
+                android:paddingStart="5dp" />
+        </LinearLayout>
 
 
     </androidx.cardview.widget.CardView>

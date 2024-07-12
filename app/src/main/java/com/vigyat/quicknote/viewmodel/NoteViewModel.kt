@@ -8,6 +8,7 @@ import com.vigyat.quicknote.model.repository.Repository
 import com.vigyat.quicknote.model.room.Note
 import kotlinx.coroutines.launch
 
+
 class NoteViewModel(private val repository: Repository) : ViewModel(), Observable {
 
     val notes = repository.getAllNotes()
@@ -32,6 +33,7 @@ class NoteViewModel(private val repository: Repository) : ViewModel(), Observabl
     fun getFilteredNotes(query: String): LiveData<List<Note>> {
         return repository.getFilteredNotes(query)
     }
+
 
     override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
 

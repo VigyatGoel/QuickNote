@@ -3,12 +3,14 @@ package com.vigyat.quicknote.view
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updateLayoutParams
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -47,6 +49,16 @@ class MainActivity : AppCompatActivity() {
         noNotesTV = mainBinding.noNotesTV
         searchView = mainBinding.searchView
 
+        val button = addBtn
+        ViewCompat.setOnApplyWindowInsetsListener(button) { view, windowInsets ->
+            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+            view.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                bottomMargin = insets.bottom
+            }
+            WindowInsetsCompat.CONSUMED
+        }
+
+
         searchView.setOnQueryTextListener(object :
             SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -83,6 +95,11 @@ class MainActivity : AppCompatActivity() {
 
         addBtn.setOnClickListener {
             val intent = Intent(this, AddNoteActivity::class.java)
+            startActivity(intent)
+        }
+
+        mainBinding.settingsBtn.setOnClickListener {
+            val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
         }
     }

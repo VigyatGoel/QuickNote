@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "497950599100",
+    "project_id": "quick-note-ab357",
+    "storage_bucket": "quick-note-ab357.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:497950599100:android:10c39f81710127e8ac2db9",
+        "android_client_info": {
+          "package_name": "com.vigyat.quicknote"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "497950599100-imqsska8nb1qln4lfbsddp3mnfg3pj21.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vigyat.quicknote",
+            "certificate_hash": "722a6f8a84af8e2edbd7a93aedba3b63de0de923"
+          }
+        },
+        {
+          "client_id": "497950599100-na8n0k062iqli3r1f2j1hdlpja3ai8d5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAf6ViB76bTbM9-eCVIHIelyuwKRPZUvsE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "497950599100-na8n0k062iqli3r1f2j1hdlpja3ai8d5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
