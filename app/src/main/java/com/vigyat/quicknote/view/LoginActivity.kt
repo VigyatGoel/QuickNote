@@ -2,6 +2,7 @@ package com.vigyat.quicknote.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -69,12 +70,17 @@ class LoginActivity : AppCompatActivity() {
         }
 
         loginViewModel.loginStatus.observe(this, Observer { isLoggedIn ->
-            if (isLoggedIn) {
-                val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                startActivity(intent)
-                finish() // This will finish LoginActivity
-            } else {
-                Toast.makeText(this@LoginActivity, "Sign in failed", Toast.LENGTH_SHORT).show()
+            try {
+                if (isLoggedIn) {
+                    val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                    startActivity(intent)
+                    finish() // This will finish LoginActivity
+                } else {
+                    Toast.makeText(this@LoginActivity, "Sign in failed", Toast.LENGTH_SHORT).show()
+                    Log.d("login", "login error")
+                }
+            } catch (e: Exception) {
+                Log.d("login-check", "login error $e")
             }
         })
 

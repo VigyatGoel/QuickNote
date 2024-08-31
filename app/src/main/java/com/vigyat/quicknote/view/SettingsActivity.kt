@@ -3,6 +3,7 @@ package com.vigyat.quicknote.view
 import android.content.Intent
 import android.os.Bundle
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -23,8 +24,6 @@ import com.vigyat.quicknote.viewmodel.NoteViewModel
 import com.vigyat.quicknote.viewmodel.NoteViewModelFactory
 import com.vigyat.quicknote.viewmodel.SettingsViewModel
 import com.vigyat.quicknote.viewmodel.SettingsViewModelFactory
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 
 class SettingsActivity : AppCompatActivity() {
 
@@ -33,6 +32,7 @@ class SettingsActivity : AppCompatActivity() {
     private lateinit var settingsViewModel: SettingsViewModel
     private lateinit var auth: FirebaseAuth
     private lateinit var logoutBtn: AppCompatButton
+    private lateinit var textView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,11 +44,13 @@ class SettingsActivity : AppCompatActivity() {
             insets
         }
         auth = FirebaseAuth.getInstance()
-        val scope = CoroutineScope(Dispatchers.Main)
-        val currentUser = auth.currentUser
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_settings)
 
         logoutBtn = binding.logoutBtn
+        textView = binding.textView2
+
+        textView.text = auth.currentUser?.displayName ?: ""
 
         val dao = NotesDatabase.getInstance(applicationContext).noteDao
         val repository = Repository(dao)
@@ -67,6 +69,7 @@ class SettingsActivity : AppCompatActivity() {
 
 
         binding.backupCard.setOnClickListener {
+
 
         }
 

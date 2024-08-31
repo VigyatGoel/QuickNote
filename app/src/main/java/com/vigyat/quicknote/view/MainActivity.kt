@@ -98,10 +98,10 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        mainBinding.settingsBtn.setOnClickListener {
-            val intent = Intent(this, SettingsActivity::class.java)
-            startActivity(intent)
-        }
+//        mainBinding.settingsBtn.setOnClickListener {
+//            val intent = Intent(this, SettingsActivity::class.java)
+//            startActivity(intent)
+//        }
     }
 
     private fun initRecyclerView() {
