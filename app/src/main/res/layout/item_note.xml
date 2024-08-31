@@ -31,7 +31,7 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:maxLines="1"
-            android:ellipsize="end"/>
+            android:ellipsize="end" />
 
         <TextView
             android:id="@+id/contentTV"

@@ -9,25 +9,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.credentials.CredentialManager
-import androidx.credentials.GetCredentialRequest
-import androidx.credentials.exceptions.GetCredentialException
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.google.android.libraries.identity.googleid.GetGoogleIdOption
-import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
-import com.google.android.libraries.identity.googleid.GoogleIdTokenParsingException
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.GoogleAuthProvider
 import com.vigyat.quicknote.R
 import com.vigyat.quicknote.databinding.ActivityLoginBinding
 import com.vigyat.quicknote.viewmodel.LoginViewModel
 import com.vigyat.quicknote.viewmodel.LoginViewModelFactory
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import java.security.MessageDigest
-import java.util.UUID
 
 
 class LoginActivity : AppCompatActivity() {
@@ -65,7 +54,11 @@ class LoginActivity : AppCompatActivity() {
 
         binding.googleSignInBtn.setOnClickListener {
 
-            loginViewModel.loginWithGoogle(this, credentialManager, getString(R.string.web_client_id))
+            loginViewModel.loginWithGoogle(
+                this,
+                credentialManager,
+                getString(R.string.web_client_id)
+            )
 
         }
 

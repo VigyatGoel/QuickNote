@@ -23,7 +23,11 @@ class LoginViewModel(private val auth: FirebaseAuth) : ViewModel() {
     private val _loginStatus = MutableLiveData<Boolean>()
     val loginStatus: LiveData<Boolean> get() = _loginStatus
 
-    fun loginWithGoogle(context: Context, credentialManager: CredentialManager, webClientId: String) {
+    fun loginWithGoogle(
+        context: Context,
+        credentialManager: CredentialManager,
+        webClientId: String
+    ) {
         viewModelScope.launch {
             try {
                 val rawNonce = UUID.randomUUID().toString()
